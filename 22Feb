@@ -1,0 +1,37 @@
+library (foreign)
+x <- read.dbf(("C:\\Users\\SALA-C22\\Desktop\\SDEMT215.dbf"))
+x <- data.frame(x)
+attach(x)
+table (SEX)
+EDA1 <- as.numeric(as.character(EDA))
+table (EDA1)
+require (car)
+install.packages("memisc")
+install.packages("car")
+install.packages("lattice")
+install.packages("MASS")
+gedad <- recode (EDA1, '1:4 =2 ; 5:95 =1')
+require (questionr)
+install.packages("questionr")
+c1 <- wtd.table(x$SEX, weights = x$FAC )
+table(c1)
+c0 <- table(x$SEX)
+c0
+tabrama <- wtd.table(x$SEX, weights = x$FAC)
+c1.1 <- round ((tabrama/margin.table(tabrama))*100,2)
+c1.1
+x$SEX <- ordered(x$SEX, levels = c(1,2), labels=c("Hombres", "Mujeres"))
+c2 <- wtd.table(x$SEX, weights = x$FAC)
+c2
+View(x$SEX)
+NAC_MES1 <- as.numeric(as.character(NAC_MES))
+c3 <- ordered(x$NAC_MES1, levels = c(01,02,03,04,05,06,07,08,09,10,11,12,13), labels=c("Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio", "Agosto","Septiembre", "Octubre","Noviembre", "Diciembre","NO esp"))
+c3
+c4 <- wtd.table(x$NAC_MES, weights = x$FAC)
+c4
+NAC_MES <-ordered(x$NAC_MES1, levels = c(1,2,3,4,5,6,7,8,9,10,11,12,99), labels=c("Enero","Febrero","Marzo", "Abril","Mayo","Junio","Julio", "Agosto","Septiembre", "Octubre","Noviembre", "Diciembre","NO esp"))
+c5
+View(c4)
+View (c5)
+c4
+NAC_MES
